@@ -228,3 +228,85 @@ let high_scores2 = scores.filter((score, index) => {
 console.log(high_scores, high_scores2);
 
 // reduce() 메서드 -- 배열 요소에 차례로 함수를 누적하는 메서드
+let numbers = [1, 2, 3, 4, 5]
+let result = numbers.reduce((total, current) => total + current, 0)
+
+console.log(result)
+
+
+// Map()
+let bag = new Map()
+bag.set('color', 'red')
+
+console.log(bag);
+console.log(bag.get('color'))
+
+let myCup = new Map(
+                    [
+                        ['color', 'white'],
+                        ['haveHandle', true],
+                        ['material', 'ceramic'],
+                        ['capacity', '300ml']
+                    ]
+);
+console.log(myCup);
+
+// chain을 통해서 순서대로 신규 데이터 입력 가능
+bag.set('type', 'mini').set('purpose', 'daily');
+console.log(bag);
+
+console.log(bag.size)
+console.log(bag.get('color'))
+console.log(bag.has('color'))
+console.log(bag.delete('type')) //지울 프로퍼티가 있으면 삭제하고 true 리턴
+console.log(bag.delete('name')) //지울 프로퍼티가 없으면 false 리턴
+console.log(bag)
+console.log(bag.clear()) //모드 프로퍼티 제거
+console.log(bag)
+
+console.log(myCup.keys())
+console.log(myCup.values())
+console.log(myCup.entries())
+
+
+// Set() -- 파이썬의 set과 동일. 순서 X 중복 X
+let numSet1 = new Set()
+numSet1.add('one')
+numSet1.add('two')
+
+let numSet2 = new Set().add('one').add('two') // 체인을 이용한 셋
+
+let numSet3 = new Set(['one', 'two']) // 배열을 이용한 셋
+
+console.log(numSet1, numSet2, numSet3)
+
+let students = new Set();
+students.add('도레미')
+students.add('백두산')
+
+console.log(students.size)
+console.log(students.has('도레미'))
+console.log(students.delete('도레미'))
+// console.log(students.clear())
+console.log(students.keys())
+console.log(students.values())
+console.log(students.entries()) // key와 value 값이 같다.
+
+
+// iterable 객체 -- 순서대로 처리가 가능한 객체를 이터러블 객체라고 한다.
+let arr = [1, 2, 3, 4, 5]
+let it = arr[Symbol.iterator]()
+
+console.log(it.next(), it.next(), it.next(), it.next(), it.next(), it.next())
+
+// 일반 객체를 이터러블하게 만들기 위한 함수
+function *gen(){
+    yield 1;
+    yield 2;
+    yield 3;
+}
+
+let g1 = gen()
+console.log(g1.next())
+console.log(g1.next())
+console.log(g1.next())
